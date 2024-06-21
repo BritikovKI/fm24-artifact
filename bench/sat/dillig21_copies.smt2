@@ -1,0 +1,68 @@
+(set-logic HORN)
+(declare-fun inv_0 (Int Int Int Int Int Int) Bool)
+(declare-fun inv_1 (Int Int Int Int Int Int) Bool)
+(declare-fun inv_2 (Int Int Int Int Int Int) Bool)
+(declare-fun inv_3 (Int Int Int Int Int Int) Bool)
+(declare-fun inv_4 (Int Int Int Int Int Int) Bool)
+
+(assert (forall ((|_FH_0'| Int) (|_FH_1'| Int) (|_FH_2'| Int) (|_FH_3'| Int) (|_FH_4'| Int) (|count'| Int))
+  (=>
+    (and (= 4000 |_FH_0'|) (= 2000 |_FH_1'|) (= 0 |_FH_2'|) (= 0 |_FH_3'|) (> |_FH_4'| 0) (< |_FH_4'| 10) (= |count'| 0))
+    (inv_0 |count'| |_FH_0'| |_FH_1'| |_FH_2'| |_FH_3'| |_FH_4'|))))
+
+(assert (forall ((w0 Int) (_FH_0 Int) (|_FH_0'| Int) (_FH_1 Int) (|_FH_1'| Int) (_FH_2 Int) (|_FH_2'| Int) (_FH_3 Int) (|_FH_3'| Int) (_FH_4 Int) (|_FH_4'| Int) (count Int) (|count'| Int))
+  (=>
+    (and (= _FH_4 |_FH_4'|) (= _FH_1 |_FH_1'|) (< _FH_3 _FH_4) (= |_FH_3'| (+ _FH_3 1)) (= _FH_0 |_FH_0'|) (= |_FH_2'| (let ((a!1 (= (ite (= (mod w0 2) 0) 0 1) 0)))
+  (+ _FH_2 (ite a!1 _FH_0 _FH_1)))) (inv_0 count _FH_0 _FH_1 _FH_2 _FH_3 _FH_4) (< count 100) (= |count'| (+ count 1)))
+    (inv_0 |count'| |_FH_0'| |_FH_1'| |_FH_2'| |_FH_3'| |_FH_4'|))))
+
+(assert (forall ((_FH_0 Int) (_FH_1 Int) (_FH_2 Int) (_FH_3 Int) (_FH_4 Int) (count Int))
+  (=>
+    (and (inv_0 count _FH_0 _FH_1 _FH_2 _FH_3 _FH_4) (>= count 100))
+    (inv_1 count _FH_0 _FH_1 _FH_2 _FH_3 _FH_4))))
+
+(assert (forall ((w0 Int) (_FH_0 Int) (|_FH_0'| Int) (_FH_1 Int) (|_FH_1'| Int) (_FH_2 Int) (|_FH_2'| Int) (_FH_3 Int) (|_FH_3'| Int) (_FH_4 Int) (|_FH_4'| Int) (count Int) (|count'| Int))
+  (=>
+    (and (= _FH_4 |_FH_4'|) (= _FH_1 |_FH_1'|) (< _FH_3 _FH_4) (= |_FH_3'| (+ _FH_3 1)) (= _FH_0 |_FH_0'|) (= |_FH_2'| (let ((a!1 (= (ite (= (mod w0 2) 0) 0 1) 0)))
+  (+ _FH_2 (ite a!1 _FH_0 _FH_1)))) (inv_1 count _FH_0 _FH_1 _FH_2 _FH_3 _FH_4) (< count 200) (= |count'| (+ count 1)))
+    (inv_1 |count'| |_FH_0'| |_FH_1'| |_FH_2'| |_FH_3'| |_FH_4'|))))
+
+(assert (forall ((_FH_0 Int) (_FH_1 Int) (_FH_2 Int) (_FH_3 Int) (_FH_4 Int) (count Int))
+  (=>
+    (and (inv_1 count _FH_0 _FH_1 _FH_2 _FH_3 _FH_4) (>= count 200))
+    (inv_2 count _FH_0 _FH_1 _FH_2 _FH_3 _FH_4))))
+
+(assert (forall ((w0 Int) (_FH_0 Int) (|_FH_0'| Int) (_FH_1 Int) (|_FH_1'| Int) (_FH_2 Int) (|_FH_2'| Int) (_FH_3 Int) (|_FH_3'| Int) (_FH_4 Int) (|_FH_4'| Int) (count Int) (|count'| Int))
+  (=>
+    (and (= _FH_4 |_FH_4'|) (= _FH_1 |_FH_1'|) (< _FH_3 _FH_4) (= |_FH_3'| (+ _FH_3 1)) (= _FH_0 |_FH_0'|) (= |_FH_2'| (let ((a!1 (= (ite (= (mod w0 2) 0) 0 1) 0)))
+  (+ _FH_2 (ite a!1 _FH_0 _FH_1)))) (inv_2 count _FH_0 _FH_1 _FH_2 _FH_3 _FH_4) (< count 300) (= |count'| (+ count 1)))
+    (inv_2 |count'| |_FH_0'| |_FH_1'| |_FH_2'| |_FH_3'| |_FH_4'|))))
+
+(assert (forall ((_FH_0 Int) (_FH_1 Int) (_FH_2 Int) (_FH_3 Int) (_FH_4 Int) (count Int))
+  (=>
+    (and (inv_2 count _FH_0 _FH_1 _FH_2 _FH_3 _FH_4) (>= count 300))
+    (inv_3 count _FH_0 _FH_1 _FH_2 _FH_3 _FH_4))))
+
+(assert (forall ((w0 Int) (_FH_0 Int) (|_FH_0'| Int) (_FH_1 Int) (|_FH_1'| Int) (_FH_2 Int) (|_FH_2'| Int) (_FH_3 Int) (|_FH_3'| Int) (_FH_4 Int) (|_FH_4'| Int) (count Int) (|count'| Int))
+  (=>
+    (and (= _FH_4 |_FH_4'|) (= _FH_1 |_FH_1'|) (< _FH_3 _FH_4) (= |_FH_3'| (+ _FH_3 1)) (= _FH_0 |_FH_0'|) (= |_FH_2'| (let ((a!1 (= (ite (= (mod w0 2) 0) 0 1) 0)))
+  (+ _FH_2 (ite a!1 _FH_0 _FH_1)))) (inv_3 count _FH_0 _FH_1 _FH_2 _FH_3 _FH_4) (< count 400) (= |count'| (+ count 1)))
+    (inv_3 |count'| |_FH_0'| |_FH_1'| |_FH_2'| |_FH_3'| |_FH_4'|))))
+
+(assert (forall ((_FH_0 Int) (_FH_1 Int) (_FH_2 Int) (_FH_3 Int) (_FH_4 Int) (count Int))
+  (=>
+    (and (inv_3 count _FH_0 _FH_1 _FH_2 _FH_3 _FH_4) (>= count 400))
+    (inv_4 count _FH_0 _FH_1 _FH_2 _FH_3 _FH_4))))
+
+(assert (forall ((w0 Int) (_FH_0 Int) (|_FH_0'| Int) (_FH_1 Int) (|_FH_1'| Int) (_FH_2 Int) (|_FH_2'| Int) (_FH_3 Int) (|_FH_3'| Int) (_FH_4 Int) (|_FH_4'| Int) (count Int) (|count'| Int))
+  (=>
+    (and (= _FH_4 |_FH_4'|) (= _FH_1 |_FH_1'|) (< _FH_3 _FH_4) (= |_FH_3'| (+ _FH_3 1)) (= _FH_0 |_FH_0'|) (= |_FH_2'| (let ((a!1 (= (ite (= (mod w0 2) 0) 0 1) 0)))
+  (+ _FH_2 (ite a!1 _FH_0 _FH_1)))) (inv_4 count _FH_0 _FH_1 _FH_2 _FH_3 _FH_4) (< count 500) (= |count'| (+ count 1)))
+    (inv_4 |count'| |_FH_0'| |_FH_1'| |_FH_2'| |_FH_3'| |_FH_4'|))))
+
+(assert (forall ((_FH_0 Int) (_FH_1 Int) (_FH_2 Int) (_FH_3 Int) (_FH_4 Int) (count Int) (|count'| Int))
+  (=>
+    (and (>= _FH_3 _FH_4) (<= _FH_2 _FH_4) (inv_4 |count'| _FH_0 _FH_1 _FH_2 _FH_3 _FH_4) (>= count 500))
+    false)))
+
+(check-sat)
