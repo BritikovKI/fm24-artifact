@@ -13,9 +13,10 @@ mkdir -p ${OUTPUT_DIR}
 #echo "Output dir is ${OUTPUT_DIR}"
 echo "Running Z3_Spacer"
 
+
 for file in ${BENCHMARK_DIR}/*.smt2; do
     echo ${file}
     filename=`basename ${file}`
-    timeout ${TIMEOUT} /usr/bin/time -f'user: %U wall: %e CPU: %PCPU' ${SCRIPTS_ROOT}/run_single_task.sh ${file} ${SOLVER} ${OPTIONS} > ${OUTPUT_DIR}/${filename}.out 2>&1
+    timeout ${TIMEOUT} /usr/bin/time -f'user: %U wall: %e CPU: %PCPU' ${SCRIPTS_ROOT}/run_single_task.sh ${file} ${SOLVER} ${OPTIONS} > ${OUTPUT_DIR}/${filename}.out 2>&1 
 done
 
