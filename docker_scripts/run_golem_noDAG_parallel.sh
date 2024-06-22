@@ -10,7 +10,7 @@ shift; shift; shift;
 #echo "Timeout is ${TIMEOUT}"
 
 category=`basename ${BENCHMARK_DIR}`
-OUTPUT_DIR="${OUTPUT_ROOT}/${category}/golem_${engine}"
+OUTPUT_DIR="${OUTPUT_ROOT}/${category}/golem_${engine}_noDAG"
 mkdir -p ${OUTPUT_DIR}
 
 #echo "Output dir is ${OUTPUT_DIR}"
