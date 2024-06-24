@@ -20,9 +20,9 @@ fi
 
 category="unsat"
 
-docker run -it --name ${category} britikov/fm24 bash scripts/run_multiloop_unsat.sh -t ${timelimit}
+docker run -it --name ${category} britikov/fm24 bash scripts/run_multiloop_unsat_parallel.sh -t ${timelimit}
 
 mkdir -p ${basedir}/times
-docker cp ${category}:/home/cav/times/${category}/. ${basedir}/times/${category}
+docker cp ${category}:/home/fm/times/${category}/. ${basedir}/times/${category}
 
 docker rm -f ${category}

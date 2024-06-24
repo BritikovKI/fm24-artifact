@@ -23,6 +23,6 @@ category="sat"
 docker run -it --name ${category} britikov/fm24 bash scripts/run_multiloop_sat.sh -t ${timelimit}
 
 mkdir -p ${basedir}/times
-docker cp ${category}:/home/cav/times/${category}/. ${basedir}/times/${category}
+docker cp ${category}:/home/fm/times/${category}/. ${basedir}/times/${category}
 
 docker rm -f ${category}
