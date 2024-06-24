@@ -47,3 +47,35 @@ This repository contains the following:
 * `docker_run_*`: A set of scripts for executing the experiments; these are executed on the host machine. They start a new docker container, run the corresponding experiment and copy the obtained results back to the host.
 * `original_logs`: Results collected from our original experiments. Note that these use *space* as the delimiter while the scripts in this artifact use *comma* as the delimiter. 
 
+## Docker image structure
+Beside the benchmarks and helper scripts copied from this repository, the docker image also contains all the tools used in the experiments. We used the binaries released in the corresponding GitHub repositories and these are already prepared in the docker image.
+The working directory of the docker image is `/home/fm`.
+It contains the following subdirectories:
+
+* `bench`: collections of benchmarks used in the experiments
+
+* `scripts`: collection of helper scripts for running experiments and collecting the results
+
+* `raw_logs`,`times`: initially empty directories for storing results of the experiments
+
+* `eldarica`: [`Eldarica`](https://github.com/uuverifiers/eldarica) solver (v2.0.9)
+
+* `golem`: [`Golem`](https://github.com/usi-verification-and-security/golem) (v0.5.0)
+
+* `z3-4.13.0-x64-glibc-2.31`: [`Z3`](https://github.com/Z3Prover/z3) solver (v4.13.0) which contains `Spacer` as one of its engines for solving CHCs.
+
+## Benchmark sets
+
+In the experiments we used 2 benchmark sets. They are available as GitHub [repository](https://github.com/BritikovKI/fv-benchmarks-2024), but we also include them in this artifact.
+
+* `SAT`: mix of SAT crafted benchmarks and benchmarks from loops-crafted-1 in [SV-COMP](https://gitlab.com/sosy-lab/benchmarking/sv-benchmarks/-/tree/main/c/loops-crafted-1?ref_type=heads)
+
+* `UNSAT`: mix of UNSAT crafted benchmarks and benchmarks from loops-crafted-1 in [SV-COMP](https://gitlab.com/sosy-lab/benchmarking/sv-benchmarks/-/tree/main/c/loops-crafted-1?ref_type=heads)
+
+
+Additionaly there are `trivial` benchmarks for the smoke test.
+
+# Tools 
+
+In these experiments we compare `Golem 0.5.0` against `Eldarica 2.0.9` and `Spacer` engine in `Z3 4.13.0`.
+The artifact uses binaries officially published on GitHub.
