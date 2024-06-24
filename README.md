@@ -123,7 +123,7 @@ unsat
 ## Paper benchmark execution
 It is  better to start with smaller version of experiments, to check the correctness of the execution. To do it call:
 ```
-$ bash RUN_BENCHMARKS.sh
+$ bash RUN_BENCHMARKS_SMALL.sh
 ```
 It will run experiments with just 10 seconds timeout and build plots for this small running time. If this script succeeds, then the full set can be tested.
 
