@@ -24,7 +24,7 @@ for file in ${BENCHMARK_DIR}/*.smt2; do
     timeout ${TIMEOUT} /usr/bin/time -f'user: %U wall: %e CPU: %PCPU' ${SCRIPTS_ROOT}/run_single_task.sh ${file} ${SOLVER} "-e ${engine} ${@}" > ${OUTPUT_DIR}/${filename}.out 2>&1 &
     processes+=($!)
         echo ${#processes[@]}
-        while [[ ${#processes[@]} == 31 ]]
+        while [[ ${#processes[@]} == 8 ]]
         do
           i=0
           while [[ ${i} < ${#processes[@]} ]]

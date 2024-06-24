@@ -14,7 +14,7 @@ Algorithm from the paper is natively included into `Golem`. To run it with the d
 
 ## Note for artifact evaluation
 
-Scripts execution may take significant time(up to 12-14 hours).
+Scripts execution may take significant time(up to few days).
 
 ## Set Up
 
@@ -79,3 +79,78 @@ Additionaly there are `trivial` benchmarks for the smoke test.
 
 In these experiments we compare `Golem 0.5.0` against `Eldarica 2.0.9` and `Spacer` engine in `Z3 4.13.0`.
 The artifact uses binaries officially published on GitHub.
+
+### Note on parallelism
+Scripts are prepared to run in a parallel way by default, running `8` solver instances by default(which will take `8` processor cores). If you have less or more processors, you can change the number by alternating every `run_*.sh` script in `docker_scripts` file, changing the number of processes run simultanuously, by changing `8` to the number of processes needed .
+
+While `Z3` and `Golem` run in a single thread, `Eldarica` in default mode uses more than one thread. We did not restrict this in our experiments and we collect wall time, not CPU time.
+
+### Running benchmarks in one process
+
+To run benchmarks with just a single process, you can execute `docker_run_multiloop_sat.sh -t <timeout>` and `docker_run_multiloop_unsat.sh -t <timeout>`, which will execute benchmarks consecutively.
+
+**NOTE** This might take very significant amount of time, as huge amount of benchmarks can't be handled by some engines, so they will execute until timeout, which for 10 min timeout for 200 benchmarks means around 4 days for a single engine run (and there are 5 different engines in the benchmark).
+
+# Reproducing the Experiments of the Paper
+
+We assume the `docker` image has been successfully obtained (pulled or built locally) according to the instructions above and that we are in the root directory of this artifact.
+
+## Smoke tests
+To test that everything is set up correctly, run the smoke-test script:
+
+```
+$ bash docker_run_smoke_test.sh
+```
+
+These starts the docker container and executes each solver on a single satisfiable and a single unsatisfiable benchmark. It should finish in a couple of seconds.
+The expected output is
+
+```
+Running Z3 on trivial SAT benchmark
+sat
+Running Z3 on trivial UNSAT benchmark
+unsat
+Running Eldarica on trivial SAT benchmark
+sat
+Running Eldarica on trivial UNSAT benchmark
+unsat
+Running Golem on trivial SAT benchmark
+sat
+Running Golem on trivial UNSAT benchmark
+unsat
+```
+
+## Paper benchmark execution
+It is  better to start with smaller version of experiments, to check the correctness of the execution. To do it call:
+```
+$ bash RUN_BENCHMARKS.sh
+```
+It will run experiments with just 10 seconds timeout and build plots for this small running time. If this script succeeds, then the full set can be tested.
+
+
+
+To run the whole benchmark set just call:
+```
+$ bash RUN_BENCHMARKS.sh
+```
+
+It will automatically execute all of the tests in a parallel manner (8 processes running in parallel by default, if you want to change the number, take a look at the `Note on parallelism` section). After the results are extracted from the container, it will produce plots, similar to ones in the paper, using `gnuplot` and `python3`.
+
+If needed experiments can be executed in single-process manner, take a look at `Running benchmarks in one process` section.
+
+### Memory requirements
+`Golem` itself is quite modest with the memory consumption, a single task should not consume more than 2 gigabytes and is typically much lower.
+On the other hand, `Eldarica` often consumes much more memory than `Golem` and might run into more memory-outs on systems with modest memory resources. 
+
+### Presenting results
+
+When the experiments finish, you should have 2 png images `sat.png` and `unsat.png` in the root directory. There should also be directory `times` which has the raw experimentation results and `cumplots` with the data based on which the plots were built.
+
+
+
+# Algorithm outside of this artifact
+Beside this artifact, `Golem` is also available on [GitHub](https://github.com/usi-verification-and-security/golem).
+The GitHub repository contains README with additional information about the tool, including basic description of how to compile it from source. It additionally contains regular binary [releases](https://github.com/usi-verification-and-security/golem/releases).
+After you obtain the binary, `Golem` can run on any SMT-LIB2 file defining a CHC satisfiability problem as mentioned in the introduction. Additional options are explained in the usage, obtained by running `golem --help`.
+
+To run the algorithm, it is sufficient to call `Golem` with the `--engine split-tpa`, as split-TPA is now powered by the algorithm described in the paper.
