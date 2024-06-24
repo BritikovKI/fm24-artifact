@@ -1,6 +1,5 @@
 #!/bin/bash 
 
-
 echo Running SAT instances
 ./docker_run_multiloop_sat_parallel.sh -t 10
 
