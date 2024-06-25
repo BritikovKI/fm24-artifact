@@ -30,7 +30,7 @@ for file in ${BENCHMARK_DIR}/*.smt2; do
           while [[ ${i} < ${#processes[@]} ]]
           do
            id=${processes[i]}
-           if kill -0 $id > /dev/null ; then
+           if kill -0 $id > /dev/null 2>&1 ; then
             i=$((i+1))
             continue
            else
