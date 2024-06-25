@@ -26,3 +26,4 @@ mkdir -p ${basedir}/times
 docker cp ${category}:/home/fm/times/${category}/. ${basedir}/times/${category}
 
 docker rm -f ${category}
+

@@ -23,6 +23,6 @@ category="sat"
 docker run -it --name ${category} usiverify/fm24 bash scripts/run_multiloop_sat_parallel.sh -t ${timelimit}
 
 mkdir -p ${basedir}/times
-docker cp ${category}:/home/cfm/times/${category}/. ${basedir}/times/${category}
+docker cp ${category}:/home/fm/times/${category}/. ${basedir}/times/${category}
 
 docker rm -f ${category}
