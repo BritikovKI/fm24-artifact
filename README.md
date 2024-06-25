@@ -125,7 +125,7 @@ It is  better to start with smaller version of experiments, to check the correct
 ```
 $ bash RUN_BENCHMARKS_SMALL.sh
 ```
-It will run experiments with just 10 seconds timeout and build plots for this small running time. If this script succeeds, then the full set can be tested.
+It will run experiments with just 20 seconds timeout and build plots for this small running time. If this script succeeds, then the full set can be tested.
 
 
 
