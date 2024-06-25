@@ -40,7 +40,8 @@ The original experiments were run on a powerful machine with AMD EPYC 7452 32-co
 This repository contains the following:
 
 * `Dockerfile` for building the `docker` image.
-* `RUN_BENCHMARKS.sh`: The script to execute the full experimentation suite to both produce the experimental results from the execution and build plots from the results afterwards.
+* `RUN_BENCHMARKS.sh`: The script to execute the full experimentation suite with 600 seconds timeout per instance to both produce the experimental results from the execution and build plots from the results afterwards.
+* `RUN_BENCHMARKS_SMALL.sh`: The script to execute the full experimentation suite with smaller timeouts(10 seconds).
 * `docker_scripts`: A set of scripts that are copied to the `docker` image and used to run the experiments in the `docker` container.
 * `bench`: Collections of benchmarks that are also copied to the `docker` image.
 * `host_scripts`: Collections of scripts that are used to present the results obtained from the experiments; these are intended to run on the host.
@@ -125,7 +126,7 @@ It is  better to start with smaller version of experiments, to check the correct
 ```
 $ bash RUN_BENCHMARKS_SMALL.sh
 ```
-It will run experiments with just 10 seconds timeout and build plots for this small running time. If this script succeeds, then the full set can be tested.
+It will run experiments with just 10 seconds timeout and build plots for this small running time. If this script succeeds, then the full set can be tested. This run is estimated to finish in 1 hour with default configuration.
 
 
 

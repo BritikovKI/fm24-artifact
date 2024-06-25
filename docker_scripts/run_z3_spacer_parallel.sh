@@ -20,7 +20,7 @@ for file in ${BENCHMARK_DIR}/*.smt2; do
     filename=`basename ${file}`
     timeout ${TIMEOUT} /usr/bin/time -f'user: %U wall: %e CPU: %PCPU' ${SCRIPTS_ROOT}/run_single_task.sh ${file} ${SOLVER} ${OPTIONS} > ${OUTPUT_DIR}/${filename}.out 2>&1 &
     processes+=($!)
-        echo ${#processes[@]}
+        # echo ${#processes[@]}
         while [[ ${#processes[@]} == 8 ]]
         do
           i=0
@@ -33,7 +33,7 @@ for file in ${BENCHMARK_DIR}/*.smt2; do
            else
             unset processes[i]
             processes=( "${processes[@]}" )
-            echo ${processes[@]}
+            # echo ${processes[@]}
            fi
           done
          sleep 1
