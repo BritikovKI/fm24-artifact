@@ -1,6 +1,6 @@
 set terminal png size 1000,600
-set output 'unsat.png'
-set title 'UNSAT comparison'
+set output 'unsafe.png'
+set title 'UNSAFE comparison'
 set xrange [0:600]
 set yrange [0:150]
 set key outside

@@ -1,6 +1,6 @@
 set terminal png size 1000,600
-set output 'sat.png'
-set title 'SAT comparison'
+set output 'safe.png'
+set title 'SAFE comparison'
 set xrange [0:600]
 set yrange [0:210]
 set key outside

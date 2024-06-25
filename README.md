@@ -128,7 +128,7 @@ $ bash RUN_BENCHMARKS_SMALL.sh
 ```
 It will run experiments with just 10 seconds timeout and build plots for this small running time. If this script succeeds, then the full set can be tested. This run is estimated to finish in 1 hour with default configuration.
 
-
+**NOTE** You will encounter error messages during the execution like `kill(\*): No such process`. This is an expected behaviour, parallel script kills previously launched processes every 10 seconds. If there is an error with killing, it means that process already succesfully terminated so there is nothing to kill. `RUN_BENCHMARKS.sh` has the same behaviour.
 
 To run the whole benchmark set just call:
 ```
@@ -145,7 +145,7 @@ On the other hand, `Eldarica` often consumes much more memory than `Golem` and m
 
 ### Presenting results
 
-When the experiments finish, you should have 2 png images `sat.png` and `unsat.png` in the root directory. There should also be directory `times` which has the raw experimentation results and `cumplots` with the data based on which the plots were built.
+When the experiments finish, you should have 2 png images `safe.png` and `unsafe.png` in the root directory. There should also be directory `times` which has the raw experimentation results and `cumplots` with the data based on which the plots were built.
 
 
 
